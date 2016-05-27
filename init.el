@@ -82,8 +82,11 @@
 
 ;;折り返さない
 (setq-default truncate-lines t)
+
 ;;ウィンドウを左右に分割したとき用の設定
 (setq-default truncate-partial-width-windows t)
+
+(set-frame-parameter (selected-frame) 'alpha '(0.95))
 
 ;; window間の移動
 (when (fboundp 'windmove-default-keybindings)
@@ -172,3 +175,13 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (require 'magit)
+
+;; .logファイルでは自動で auto-revert-tail-mode にする
+(add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))
+
+;; ファイル更新やバッファオープン時、自動でカーソルを末尾に移動する
+(defun do-end-of-buffer()
+  (when auto-revert-tail-mode
+    (end-of-buffer)))
+(add-hook 'after-revert-hook 'do-end-of-buffer)
+(add-hook 'find-file-hook 'do-end-of-buffer)
