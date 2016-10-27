@@ -136,6 +136,10 @@
 (setq web-mode-indent-style 4)
 (add-hook 'web-mode-hook 'auto-complete-mode)
 
+;; js2-mode
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (require 'auto-complete-config)
@@ -185,3 +189,5 @@
     (end-of-buffer)))
 (add-hook 'after-revert-hook 'do-end-of-buffer)
 (add-hook 'find-file-hook 'do-end-of-buffer)
+
+(global-git-gutter-mode t)
