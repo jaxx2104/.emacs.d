@@ -130,10 +130,12 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 4)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 4)
-(setq web-mode-indent-style 4)
+(setq web-mode-indent-style 2)
+(setq web-mode-engines-alist '(("php" . "\\.html\\'")))
 (add-hook 'web-mode-hook 'auto-complete-mode)
 
 ;; js2-mode
@@ -191,3 +193,17 @@
 (add-hook 'find-file-hook 'do-end-of-buffer)
 
 (global-git-gutter-mode t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (web-mode rainbow-delimiters php-mode multiple-cursors monokai-theme magit js2-mode git-gutter flycheck auto-complete))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
